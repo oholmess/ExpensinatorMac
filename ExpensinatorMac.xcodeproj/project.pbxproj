@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		85DF80992CF3834A002E6417 /* AIReceiptScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 85DF80982CF3834A002E6417 /* AIReceiptScanner */; };
+		85EB2F542CEE36CB005D72D0 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 85EB2F532CEE36CB005D72D0 /* PythonKit */; };
+		85EB58C92CF0F1E9005D72D0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 85EB58C82CF0F1E9005D72D0 /* Alamofire */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		85EB2F2D2CEE33DE005D72D0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85EB2F542CEE36CB005D72D0 /* PythonKit in Frameworks */,
+				85DF80992CF3834A002E6417 /* AIReceiptScanner in Frameworks */,
+				85EB58C92CF0F1E9005D72D0 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +121,9 @@
 			);
 			name = ExpensinatorMac;
 			packageProductDependencies = (
+				85EB2F532CEE36CB005D72D0 /* PythonKit */,
+				85EB58C82CF0F1E9005D72D0 /* Alamofire */,
+				85DF80982CF3834A002E6417 /* AIReceiptScanner */,
 			);
 			productName = ExpensinatorMac;
 			productReference = 85EB2F1B2CEE33DC005D72D0 /* ExpensinatorMac.app */;
@@ -195,6 +207,11 @@
 			);
 			mainGroup = 85EB2F122CEE33DC005D72D0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				85EB2F522CEE36CB005D72D0 /* XCRemoteSwiftPackageReference "PythonKit" */,
+				85EB58C72CF0F1E9005D72D0 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				85DF80972CF3834A002E6417 /* XCRemoteSwiftPackageReference "AIReceiptScanner" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 85EB2F1C2CEE33DC005D72D0 /* Products */;
 			projectDirPath = "";
@@ -401,16 +418,51 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "take receipt picture";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "get receipt picture";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/lib",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/lib",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/lib",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = GameAntics.ExpensinatorMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -428,16 +480,51 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "take receipt picture";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "get receipt picture";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/lib",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/lib",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/lib",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor/plugin",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+					"$(PROJECT_DIR)/ExpensinatorMac/Python\\ Scripts/mypythonenv/lib/python3.12/site-packages/mysql/vendor",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = GameAntics.ExpensinatorMac;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -549,6 +636,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		85DF80972CF3834A002E6417 /* XCRemoteSwiftPackageReference "AIReceiptScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alfianlosari/AIReceiptScanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+		85EB2F522CEE36CB005D72D0 /* XCRemoteSwiftPackageReference "PythonKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pvieito/PythonKit.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		85EB58C72CF0F1E9005D72D0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		85DF80982CF3834A002E6417 /* AIReceiptScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85DF80972CF3834A002E6417 /* XCRemoteSwiftPackageReference "AIReceiptScanner" */;
+			productName = AIReceiptScanner;
+		};
+		85EB2F532CEE36CB005D72D0 /* PythonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85EB2F522CEE36CB005D72D0 /* XCRemoteSwiftPackageReference "PythonKit" */;
+			productName = PythonKit;
+		};
+		85EB58C82CF0F1E9005D72D0 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85EB58C72CF0F1E9005D72D0 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 85EB2F132CEE33DC005D72D0 /* Project object */;
 }
