@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Expense: Identifiable, Codable {
-    var id: Int? { expenseId }      // Use expenseId as the identifier
+struct Expense: Identifiable, Codable, Equatable {
+    var id: UUID = UUID()      // Use expenseId as the identifier
     var expenseId: Int?             // Optional because it may not be set initially
     var userId: Int
     var amount: Decimal

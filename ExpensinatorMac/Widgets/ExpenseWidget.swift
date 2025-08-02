@@ -9,14 +9,35 @@ import SwiftUI
 struct ExpensesList: View {
     let expenses: [Expense]
     let categories: [Category]
-    @State private var sortOrder = [KeyPathComparator(\Expense.createdAt, order: .reverse)]
+    @Binding var selectedExpenses: [Expense]
+    @State private var sortOrder = [KeyPathComparator(\Expense.date, order: .reverse)]
     
     var body: some View {
         if expenses.isEmpty {
             noExpenses
         } else {
             List(expenses.sorted(using: sortOrder)) { expense in
-                ExpenseRow(expense: expense, categoryName: categoryName(for: expense.categoryId))
+                // Create a binding for isSelected that checks the presence of `expense` in `selectedExpenses`
+                let isSelected = Binding<Bool>(
+                    get: { selectedExpenses.contains(expense) },
+                    set: { newValue in
+                        if newValue {
+                            // Add the expense if not already selected
+                            if !selectedExpenses.contains(expense) {
+                                selectedExpenses.append(expense)
+                            }
+                        } else {
+                            // Remove the expense if now unchecked
+                            selectedExpenses.removeAll { $0 == expense }
+                        }
+                    }
+                )
+                
+                ExpenseRow(
+                    expense: expense,
+                    categoryName: categoryName(for: expense.categoryId),
+                    isSelected: isSelected
+                )
             }
             .listStyle(PlainListStyle())
         }
@@ -52,24 +73,34 @@ struct ExpensesList: View {
     struct ExpenseRow: View {
         let expense: Expense
         let categoryName: String
+        @Binding var isSelected: Bool  // New binding for selection state
         
         var body: some View {
             HStack {
+                // A checkbox or toggle
+                Toggle(isOn: $isSelected) {
+                    EmptyView()
+                }
+                .labelsHidden()
+                .toggleStyle(CheckboxToggleStyle())
+                .padding(.leading, 8)
+                
                 VStack(alignment: .leading) {
-                    Text(truncateString(self.expense.description)) // Use the resolved category name here
+                    Text(truncateString(expense.description))
                         .font(.system(size: 20).bold())
                         .foregroundColor(CustomColor.EerieBlack)
-                                    
-                    categoryBadge(for: categoryName)
                     
                     Text(expense.date, format: Date.FormatStyle(date: .abbreviated, time: .omitted))
                         .font(.system(size: 12))
                         .foregroundColor(CustomColor.EerieBlack.opacity(0.6))
                         .padding(.trailing)
-                    
-                    
                 }
                 .padding(.leading)
+                
+                Spacer()
+                
+                categoryBadge(for: categoryName)
+                    .padding(.leading, 10)
                 
                 Spacer()
                 
@@ -84,7 +115,7 @@ struct ExpensesList: View {
         @ViewBuilder
         func categoryBadge(for categoryName: String) -> some View {
             Text(categoryName)
-                .font(Font.custom("SF Pro Display", size: 14).weight(.bold))
+                .font(.system(size: 14).bold())
                 .foregroundColor(Color(red: 0.42, green: 0.6, blue: 0.31))
                 .padding(.horizontal, 8)
                 .padding(.vertical, 4)
@@ -116,6 +147,6 @@ struct ExpensesList: View {
         Expense(expenseId: 2, userId: 1, amount: 15.00, categoryId: 2, description: "Taxi fare", date: Date())
     ]
     
-    return ExpensesList(expenses: sampleExpenses, categories: sampleCategories)
+    ExpensesList(expenses: sampleExpenses, categories: sampleCategories, selectedExpenses: .constant([]))
         .preferredColorScheme(.light)
 }

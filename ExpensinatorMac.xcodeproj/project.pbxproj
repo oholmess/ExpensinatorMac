@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		85DF80992CF3834A002E6417 /* AIReceiptScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 85DF80982CF3834A002E6417 /* AIReceiptScanner */; };
+		855BC9B12D01F91E009A1C1E /* AIReceiptScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 855BC9B02D01F91E009A1C1E /* AIReceiptScanner */; };
 		85EB2F542CEE36CB005D72D0 /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = 85EB2F532CEE36CB005D72D0 /* PythonKit */; };
 		85EB58C92CF0F1E9005D72D0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 85EB58C82CF0F1E9005D72D0 /* Alamofire */; };
 /* End PBXBuildFile section */
@@ -59,7 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85EB2F542CEE36CB005D72D0 /* PythonKit in Frameworks */,
-				85DF80992CF3834A002E6417 /* AIReceiptScanner in Frameworks */,
+				855BC9B12D01F91E009A1C1E /* AIReceiptScanner in Frameworks */,
 				85EB58C92CF0F1E9005D72D0 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,7 +123,7 @@
 			packageProductDependencies = (
 				85EB2F532CEE36CB005D72D0 /* PythonKit */,
 				85EB58C82CF0F1E9005D72D0 /* Alamofire */,
-				85DF80982CF3834A002E6417 /* AIReceiptScanner */,
+				855BC9B02D01F91E009A1C1E /* AIReceiptScanner */,
 			);
 			productName = ExpensinatorMac;
 			productReference = 85EB2F1B2CEE33DC005D72D0 /* ExpensinatorMac.app */;
@@ -210,7 +210,7 @@
 			packageReferences = (
 				85EB2F522CEE36CB005D72D0 /* XCRemoteSwiftPackageReference "PythonKit" */,
 				85EB58C72CF0F1E9005D72D0 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				85DF80972CF3834A002E6417 /* XCRemoteSwiftPackageReference "AIReceiptScanner" */,
+				855BC9AF2D01F91E009A1C1E /* XCRemoteSwiftPackageReference "AIReceiptScanner" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 85EB2F1C2CEE33DC005D72D0 /* Products */;
@@ -638,7 +638,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		85DF80972CF3834A002E6417 /* XCRemoteSwiftPackageReference "AIReceiptScanner" */ = {
+		855BC9AF2D01F91E009A1C1E /* XCRemoteSwiftPackageReference "AIReceiptScanner" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/alfianlosari/AIReceiptScanner.git";
 			requirement = {
@@ -665,9 +665,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		85DF80982CF3834A002E6417 /* AIReceiptScanner */ = {
+		855BC9B02D01F91E009A1C1E /* AIReceiptScanner */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 85DF80972CF3834A002E6417 /* XCRemoteSwiftPackageReference "AIReceiptScanner" */;
+			package = 855BC9AF2D01F91E009A1C1E /* XCRemoteSwiftPackageReference "AIReceiptScanner" */;
 			productName = AIReceiptScanner;
 		};
 		85EB2F532CEE36CB005D72D0 /* PythonKit */ = {

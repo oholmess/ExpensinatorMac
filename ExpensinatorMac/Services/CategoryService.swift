@@ -15,7 +15,11 @@ class CategoryService {
 
     func getCategories() async throws {
         // Replace with your actual Azure Function URL
-        let url = "https://FunctionAppCCB2.azurewebsites.net/api/get_categories"
+        let route = NetworkRoutes.getCategories
+        guard let url = route.url else {
+            print("Failed to create/find URL")
+            throw ConfigurationError.nilObject
+        }
         
         do {
             // Make an asynchronous request to the Azure Function
@@ -33,7 +37,6 @@ class CategoryService {
             await MainActor.run {
                 self.categories = categories
             }
-            print("Categories: ", categories)
         } catch let error as AFError {
             print("AFError: Error fetching categories: \(error.localizedDescription)")
             throw error

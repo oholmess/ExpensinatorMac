@@ -130,69 +130,14 @@ struct AddExpenseView: View {
                     
                     Spacer()
                 }
-                
-                
-                if let imageURL = selectedImageURL {
-                    VStack(alignment: .trailing) {
-                        Button {
-                            selectedImageURL = nil
-                        } label: {
-                            Image(systemName: "trash")
-                                .foregroundColor(.white)
-                                .font(.system(size: 14).bold())
-                                .padding(8)
-                                .background(RoundedRectangle(cornerRadius: 8).fill(.red))
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        .padding(.trailing)
-                        
-                        Button {
-                            selectImage()
-                        } label: {
-                            Image(nsImage: NSImage(contentsOf: imageURL)!)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .clipShape(RoundedRectangle(cornerRadius: 8))
-                                .padding(.trailing)
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                        Spacer()
-                    }
-                } else {
-                    Button {
-                        selectImage()
-                    } label: {
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(.white)
-                            .frame(maxWidth: .infinity)
-                            .overlay {
-                                VStack {
-                                    Image(systemName: "plus")
-                                        .font(.system(size: 26).bold())
-                                        .foregroundColor(.black)
-                                    
-                                    Text("Upload a receipt")
-                                        .font(.system(size: 14))
-                                        .foregroundColor(.black.opacity(0.7))
-                                }
-                            }
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    .padding(.trailing)
-                }
-               
             }
             .frame(minHeight: 260, idealHeight: 300, maxHeight: 350)
+            .padding(.trailing)
             
             Spacer()
             
             Button {
-                if let imageURL = selectedImageURL {
-                    viewModel.addAndUploadReceipt(imageURL: imageURL)
-                } else {
-                    viewModel.addExpense()
-                }
+                viewModel.addExpense()
             } label: {
                 Text("Save Expense")
                     .font(.system(size: 16))
@@ -215,16 +160,6 @@ struct AddExpenseView: View {
                     .multilineTextAlignment(.center)
                     .padding()
             }
-        }
-    }
-    
-    private func selectImage() {
-        let panel = NSOpenPanel()
-        panel.allowedFileTypes = ["png", "jpg", "jpeg"]
-        panel.allowsMultipleSelection = false
-        panel.canChooseDirectories = false
-        if panel.runModal() == .OK, let url = panel.url {
-            selectedImageURL = url
         }
     }
 }

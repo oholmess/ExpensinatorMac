@@ -9,5 +9,6 @@ import Foundation
 
 extension Notification.Name {
     static let didAddExpense = Notification.Name("didAddExpense")
+    static let didDeleteExpense = Notification.Name("didDeleteExpense")
  
 }

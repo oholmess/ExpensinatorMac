@@ -15,25 +15,27 @@ struct HomePageView: View {
     @State private var showAddMenu = false
     @State private var showSideMenu = false
     @State private var totalAmount: PythonObject = 0
+    @State private var presentEditExpense = false
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     var body: some View {
         VStack {
-            VStack {
-                moneySpent
-            }
-            .frame(maxWidth: .infinity)
-            .background(CustomColor.green1)
-            
-            syncNow
-            recentTransactions
-            ExpensesList(expenses: viewModel.expenses, categories: CategoryService.shared.categories)
-        }
-        .overlay {
             if viewModel.isLoading {
                 ZStack {
                     Color.black.opacity(0.3)
                     Spinner()
                 }
+            } else {
+                VStack {
+                    moneySpent
+                    ChartView(expenses: viewModel.expenses)
+                }
+                .frame(maxWidth: .infinity)
+                .background(CustomColor.green1)
+                
+                syncNow
+                recentTransactions
+                ExpensesList(expenses: viewModel.expenses, categories: CategoryService.shared.categories, selectedExpenses: $viewModel.selectedExpenses)
             }
         }
         .toolbar {
@@ -51,6 +53,15 @@ struct HomePageView: View {
                 await viewModel.getExpenses()
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: .didDeleteExpense)) { _ in
+            Task {
+                await viewModel.getExpenses()
+            }
+        }
+        .sheet(isPresented: $presentEditExpense) {
+            EditExpenseView(vm: viewModel)
+                .frame(minWidth: horizontalSizeClass == .regular ? 960 : nil, minHeight: horizontalSizeClass == .regular ? 512 : nil)
+        }
     }
     
     @ViewBuilder
@@ -63,12 +74,9 @@ struct HomePageView: View {
             .foregroundColor(.white)
             .opacity(0.8)
         
-        Text("$313.31")
+        Text("\(viewModel.getTotalSpent())€")
             .font(.system(size: 50).bold())
             .foregroundColor(.white)
-        
-        Spacer()
-            .frame(height: 40)
     }
     
     @ViewBuilder
@@ -107,6 +115,7 @@ struct HomePageView: View {
     
     @ViewBuilder
     var recentTransactions: some View {
+        var isDisabled: Bool { viewModel.selectedExpenses.isEmpty }
         HStack {
             Text("Expenses")
                 .font(.system(size: 26).bold())
@@ -114,6 +123,42 @@ struct HomePageView: View {
                 .opacity(0.8)
             
             Spacer()
+            
+            Button {
+                presentEditExpense.toggle()
+            } label: {
+                Image(systemName: "square.and.pencil")
+                    .font(.system(size: 14))
+                    .foregroundColor(isDisabled ? .black.opacity(0.5) : .white)
+                    .padding(6)
+                    .background {
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(isDisabled ? .black.opacity(0.02) : CustomColor.green2)
+                    }
+                    .padding(.trailing, 4)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .disabled(isDisabled)
+            
+            Button {
+                Task {
+                    await viewModel.deleteExpenses()
+                    viewModel.selectedExpenses.removeAll()
+                }
+            } label: {
+                Image(systemName: "trash")
+                    .font(.system(size: 14))
+                    .foregroundColor(isDisabled ? .black.opacity(0.5) : .white)
+                    .padding(6)
+                    .background {
+                        RoundedRectangle(cornerRadius: 6)
+                            .fill(isDisabled ? .black.opacity(0.02) : .red)
+                    }
+                    .padding(.trailing, 4)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .disabled(isDisabled)
+            .help("Delete selected expenses")
             
             Button {
                 nav.pageState = .addExpense

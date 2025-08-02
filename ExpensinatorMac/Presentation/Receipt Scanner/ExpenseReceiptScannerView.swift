@@ -8,7 +8,9 @@
 import SwiftUI
 import AIReceiptScanner
 
-let apikey = "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"
+//let apikey = "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"
+
+let apiKey = "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"
 
 struct ExpenseReceiptScannerView: View {
     @State var scanStatus: ScanStatus = .idle
@@ -16,9 +18,10 @@ struct ExpenseReceiptScannerView: View {
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
     
     var body: some View {
-        ReceiptPickerScannerView(apiKey: apikey, scanStatus: $scanStatus)
-            .sheet(item: $addReceiptToExpenseSheetItem) { item in
-                Text("Todo: Confirmation View")
+        ReceiptPickerScannerView(apiKey: apiKey, scanStatus: $scanStatus)
+            .sheet(item: $addReceiptToExpenseSheetItem) {
+                AddReceiptToExpenseConfirmationView(vm: .init(scanResult: $0))
+                    .frame(minWidth: horizontalSizeClass == .regular ? 960 : nil, minHeight: horizontalSizeClass == .regular ? 512 : nil)
                 
             }
             .navigationTitle("AI Receipt Scanner")
