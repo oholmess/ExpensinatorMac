@@ -8,9 +8,8 @@
 import SwiftUI
 import AIReceiptScanner
 
-//let apikey = "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"
-
-let apiKey = "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"
+// IMPORTANT: Add your OpenAI API key here or load from environment
+let apiKey = ProcessInfo.processInfo.environment["OPENAI_API_KEY"] ?? "YOUR_OPENAI_API_KEY_HERE"
 
 struct ExpenseReceiptScannerView: View {
     @State var scanStatus: ScanStatus = .idle

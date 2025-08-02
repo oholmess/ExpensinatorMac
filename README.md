@@ -58,8 +58,10 @@ A macOS expense tracking application built with SwiftUI, with AI-powered receipt
    - `AIReceiptScanner` - Receipt scanning functionality
 
 4. **Configure API Keys**
-   - Add your OpenAI API key in `ExpenseReceiptScannerView.swift`
-   - Update the key in the `apiKey` variable
+   - Copy `Config.example.plist` to `Config.plist`
+   - Add your OpenAI API key to `Config.plist`
+   - Or set the `OPENAI_API_KEY` environment variable
+   - The app will automatically load the key from environment variables
 
 5. **Build and Run**
    - Select your target device/simulator
